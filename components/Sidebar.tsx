@@ -6,11 +6,12 @@ import { cn } from '@/lib/utils';
 
 interface SubItem {
   title: string;
-  slug: string;
+  slug: string; // id section
 }
 
 interface MenuItem {
   title: string;
+  basePath?: string; // halaman utama (misalnya "/github")
   items: SubItem[];
 }
 
@@ -24,87 +25,94 @@ interface SidebarProps {
 const menuData: MenuItem[] = [
   {
     title: 'Introduction',
+    basePath: '/', // halaman home
     items: [
       { title: 'Tujuan Dokumentasi', slug: 'tujuan-docs' },
       { title: 'Cara Menggunakan', slug: 'cara-pakai-docs' },
     ],
   },
-  {
-    title: 'Github',
-    items: [
-      { title: 'Upload Project', slug: 'upload-project' },
-      { title: 'Restore & Backup', slug: 'restore' },
-      { title: 'Branching Strategy', slug: 'branching' },
-      { title: 'Best Practices', slug: 'git-best-practices' },
-    ],
-  },
-  {
-    title: 'Next.js',
-    items: [
-      { title: 'Setup & Installation', slug: 'nextjs-setup' },
-      { title: 'Pages & Routing', slug: 'pages-routing' },
-      { title: 'API Routes', slug: 'api-routes' },
-      { title: 'Deployment', slug: 'deployment' },
-    ],
-  },
-  {
-    title: 'React / TSX Tips',
-    items: [
-      { title: 'Functional Components', slug: 'functional-components' },
-      { title: 'State & Props', slug: 'state-props' },
-      { title: 'Hooks (useState, useEffect)', slug: 'hooks' },
-      { title: 'Context API', slug: 'context-api' },
-    ],
-  },
-  {
-    title: 'Shadcn / UI Components',
-    items: [
-      { title: 'Installation', slug: 'shadcn-install' },
-      { title: 'Navbar & Sidebar', slug: 'navbar-sidebar' },
-      { title: 'Buttons & Inputs', slug: 'buttons-inputs' },
-      { title: 'Modals & Dialogs', slug: 'modals' },
-    ],
-  },
-  {
-    title: 'TailwindCSS',
-    items: [
-      { title: 'Setup & Config', slug: 'tailwind-setup' },
-      { title: 'Layout System', slug: 'layout-system' },
-      { title: 'Responsiveness', slug: 'responsiveness' },
-      { title: 'Custom Classes', slug: 'custom-classes' },
-    ],
-  },
-  {
-    title: 'Productivity / Tools',
-    items: [
-      { title: 'VSCode Tips', slug: 'vscode-tips' },
-      { title: 'Git Workflow', slug: 'git-workflow' },
-      { title: 'Terminal Shortcuts', slug: 'terminal-shortcuts' },
-    ],
-  },
-  {
-    title: 'Projects',
-    items: [
-      { title: 'Contoh Project Next.js', slug: 'example-nextjs' },
-      { title: 'Project dengan TSX', slug: 'example-tsx' },
-    ],
-  },
-  {
-    title: 'Notes / Snippets',
-    items: [
-      { title: 'Code Snippets', slug: 'code-snippets' },
-      { title: 'Reusable Components', slug: 'reusable-components' },
-      { title: 'Commands & Scripts', slug: 'commands-scripts' },
-    ],
-  },
+  // {
+  //   title: 'Github',
+  //   basePath: '/github',
+  //   items: [
+  //     { title: 'Upload Project', slug: 'upload-project' },
+  //     { title: 'Restore & Backup', slug: 'restore' },
+  //     { title: 'Branching Strategy', slug: 'branching' },
+  //     { title: 'Best Practices', slug: 'git-best-practices' },
+  //   ],
+  // },
+  // {
+  //   title: 'Next.js',
+  //   basePath: '/nextjs',
+  //   items: [
+  //     { title: 'Setup & Installation', slug: 'nextjs-setup' },
+  //     { title: 'Pages & Routing', slug: 'pages-routing' },
+  //     { title: 'API Routes', slug: 'api-routes' },
+  //     { title: 'Deployment', slug: 'deployment' },
+  //   ],
+  // },
+  // {
+  //   title: 'React / TSX Tips',
+  //   basePath: '/react-tips',
+  //   items: [
+  //     { title: 'Functional Components', slug: 'functional-components' },
+  //     { title: 'State & Props', slug: 'state-props' },
+  //     { title: 'Hooks (useState, useEffect)', slug: 'hooks' },
+  //     { title: 'Context API', slug: 'context-api' },
+  //   ],
+  // },
+  // {
+  //   title: 'Shadcn / UI Components',
+  //   basePath: '/shadcn',
+  //   items: [
+  //     { title: 'Installation', slug: 'shadcn-install' },
+  //     { title: 'Navbar & Sidebar', slug: 'navbar-sidebar' },
+  //     { title: 'Buttons & Inputs', slug: 'buttons-inputs' },
+  //     { title: 'Modals & Dialogs', slug: 'modals' },
+  //   ],
+  // },
+  // {
+  //   title: 'TailwindCSS',
+  //   basePath: '/tailwindcss',
+  //   items: [
+  //     { title: 'Setup & Config', slug: 'tailwind-setup' },
+  //     { title: 'Layout System', slug: 'layout-system' },
+  //     { title: 'Responsiveness', slug: 'responsiveness' },
+  //     { title: 'Custom Classes', slug: 'custom-classes' },
+  //   ],
+  // },
+  // {
+  //   title: 'Productivity / Tools',
+  //   basePath: '/tools',
+  //   items: [
+  //     { title: 'VSCode Tips', slug: 'vscode-tips' },
+  //     { title: 'Git Workflow', slug: 'git-workflow' },
+  //     { title: 'Terminal Shortcuts', slug: 'terminal-shortcuts' },
+  //   ],
+  // },
+  // {
+  //   title: 'Projects',
+  //   basePath: '/projects',
+  //   items: [
+  //     { title: 'Contoh Project Next.js', slug: 'example-nextjs' },
+  //     { title: 'Project dengan TSX', slug: 'example-tsx' },
+  //   ],
+  // },
+  // {
+  //   title: 'Notes / Snippets',
+  //   basePath: '/notes',
+  //   items: [
+  //     { title: 'Code Snippets', slug: 'code-snippets' },
+  //     { title: 'Reusable Components', slug: 'reusable-components' },
+  //     { title: 'Commands & Scripts', slug: 'commands-scripts' },
+  //   ],
+  // },
 ];
 
 export default function Sidebar({ searchQuery, isOpen, onClose }: SidebarProps) {
-  // State untuk menyimpan section mana yang terbuka/collapsed
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
   const [filteredMenu, setFilteredMenu] = useState<MenuItem[]>(menuData);
 
-  // Toggle expand/collapse untuk section
   const toggleSection = (title: string) => {
     setExpandedSections((prev) => ({
       ...prev,
@@ -112,7 +120,6 @@ export default function Sidebar({ searchQuery, isOpen, onClose }: SidebarProps) 
     }));
   };
 
-  // Filter menu berdasarkan search query
   useEffect(() => {
     if (!searchQuery.trim()) {
       setFilteredMenu(menuData);
@@ -133,7 +140,6 @@ export default function Sidebar({ searchQuery, isOpen, onClose }: SidebarProps) 
 
     setFilteredMenu(filtered);
 
-    // Auto-expand sections yang ada hasil search
     const expanded: Record<string, boolean> = {};
     filtered.forEach((section) => {
       expanded[section.title] = true;
@@ -191,10 +197,9 @@ export default function Sidebar({ searchQuery, isOpen, onClose }: SidebarProps) 
                       {section.items.map((item) => (
                         <a
                           key={item.slug}
-                          href={`#${item.slug}`}
+                          href={`${section.basePath ?? ''}#${item.slug}`}
                           className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
                           onClick={() => {
-                            // Close sidebar on mobile after clicking
                             if (window.innerWidth < 768) {
                               onClose();
                             }
