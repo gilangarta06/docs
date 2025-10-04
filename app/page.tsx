@@ -22,6 +22,35 @@ export default function Home() {
         </p>
 
         <div className="grid gap-4 md:grid-cols-2">
+          {/* Github Docs */}
+          <Link href="/github">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Github className="h-5 w-5" /> Github
+                </CardTitle>
+                <CardDescription>Dokumentasi penggunaan Github untuk project kamu.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Badge variant="secondary">Version Control</Badge>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* Next.js Docs */}
+          <Link href="/nextjs">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Code2 className="h-5 w-5" /> Next.js
+                </CardTitle>
+                <CardDescription>Panduan lengkap Next.js dari setup hingga deployment.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Badge variant="secondary">Framework</Badge>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </section>
     </div>
