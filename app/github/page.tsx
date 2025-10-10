@@ -8,25 +8,68 @@ export default function GithubPage() {
       <section className="space-y-4">
         <h1 className="text-4xl font-bold tracking-tight">Github Documentation</h1>
         <p className="text-lg text-muted-foreground">
-          Panduan penggunaan Github untuk manajemen project, mulai dari upload project, restore & backup,
-          branching strategy, hingga best practices.
+          Panduan penggunaan GitHub untuk manajemen project, mulai dari upload project pertama,
+          push update setelah bekerja, rollback commit, hingga best practices pengelolaan repository.
         </p>
       </section>
 
-      {/* Upload Project */}
+      {/* Upload Project Pertama */}
       <section id="upload-project" className="space-y-4 scroll-mt-20">
-        <h2 className="text-3xl font-bold tracking-tight">Upload Project</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Upload Project Pertama</h2>
         <Card>
           <CardHeader>
-            <CardTitle>Langkah Upload</CardTitle>
-            <CardDescription>Push project lokal ke repository Github</CardDescription>
+            <CardTitle>Langkah Awal Upload ke GitHub</CardTitle>
+            <CardDescription>Push project lokal pertama kali ke repository baru</CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
             <CodeBlock code="git init" />
             <CodeBlock code="git remote add origin https://github.com/username/nama-repo.git" />
             <CodeBlock code="git add ." />
             <CodeBlock code={`git commit -m "first commit"`} />
+            <CodeBlock code="git branch -M main" />
             <CodeBlock code="git push -u origin main" />
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Push Setelah Update */}
+      <section id="push-update" className="space-y-4 scroll-mt-20">
+        <h2 className="text-3xl font-bold tracking-tight">Push Setelah Update</h2>
+        <Card>
+          <CardHeader>
+            <CardTitle>Langkah Push Setelah Perubahan</CardTitle>
+            <CardDescription>
+              Gunakan perintah ini setiap kali kamu menyelesaikan pekerjaan atau fitur baru.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <CodeBlock code="git add ." />
+            <CodeBlock code={`git commit -m "feat: update fitur dashboard"`} />
+            <CodeBlock code="git pull origin main" />
+            <CodeBlock code="git push origin main" />
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Rollback Commit */}
+      <section id="rollback" className="space-y-4 scroll-mt-20">
+        <h2 className="text-3xl font-bold tracking-tight">Rollback ke Commit Sebelumnya</h2>
+        <Card>
+          <CardHeader>
+            <CardTitle>Cara Revert atau Reset Commit</CardTitle>
+            <CardDescription>
+              Gunakan untuk mengembalikan project ke commit sebelumnya (berhati-hati, karena bisa menghapus perubahan).
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <CodeBlock code="git log --oneline" />
+            <CodeBlock code="git checkout <commit_id>" />
+            <CodeBlock code="git revert <commit_id>" />
+            <CodeBlock code="git reset --hard <commit_id>" />
+            <p className="text-sm text-muted-foreground">
+              💡 <b>Tips:</b> Gunakan <code>revert</code> untuk membuat commit pembatalan (aman),
+              dan <code>reset --hard</code> hanya bila kamu yakin ingin menghapus perubahan permanen.
+            </p>
           </CardContent>
         </Card>
       </section>
@@ -37,7 +80,7 @@ export default function GithubPage() {
         <Card>
           <CardHeader>
             <CardTitle>Cloning & Backup</CardTitle>
-            <CardDescription>Menduplikasi repository dari Github</CardDescription>
+            <CardDescription>Menduplikasi repository dari GitHub</CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
             <CodeBlock code="git clone https://github.com/username/nama-repo.git" />

@@ -28,83 +28,72 @@ const menuData: MenuItem[] = [
     title: 'Introduction',
     basePath: '/', // halaman home
   },
-  {
-    title: 'Github',
-    basePath: '/github',
-    items: [
-      { title: 'Upload Project', slug: 'upload-project' },
-      { title: 'Restore & Backup', slug: 'restore' },
-      { title: 'Branching Strategy', slug: 'branching' },
-      { title: 'Best Practices', slug: 'git-best-practices' },
-    ],
-  },
+{
+  title: 'Github',
+  basePath: '/github',
+  items: [
+    { title: 'Upload Project Pertama', slug: 'upload-project' },
+    { title: 'Push Setelah Update', slug: 'push-update' },
+    { title: 'Rollback ke Commit Sebelumnya', slug: 'rollback' },
+    { title: 'Restore & Backup', slug: 'restore' },
+    { title: 'Branching Strategy', slug: 'branching' },
+    { title: 'Best Practices', slug: 'git-best-practices' },
+  ],
+},
     
-  {
-    title: 'Next.js',
-    basePath: '/nextjs',
-    items: [
-      { title: 'Setup & Installation', slug: 'nextjs-setup' },
-      { title: 'Pages & Routing', slug: 'pages-routing' },
-      { title: 'API Routes', slug: 'api-routes' },
-      { title: 'Deployment', slug: 'deployment' },
-    ],
-  }, 
-  {
-    title: 'React / TSX Tips',
-    basePath: '/react-tips',
-    items: [
-      { title: 'Functional Components', slug: 'functional-components' },
-      { title: 'State & Props', slug: 'state-props' },
-      { title: 'Hooks (useState, useEffect)', slug: 'hooks' },
-      { title: 'Context API', slug: 'context-api' },
-    ],
-  },
-  {
-    title: 'Shadcn / UI Components',
-    basePath: '/shadcn',
-    items: [
-      { title: 'Installation', slug: 'shadcn-install' },
-      { title: 'Navbar & Sidebar', slug: 'navbar-sidebar' },
-      { title: 'Buttons & Inputs', slug: 'buttons-inputs' },
-      { title: 'Modals & Dialogs', slug: 'modals' },
-    ],
-  },
-  {
-    title: 'TailwindCSS',
-    basePath: '/tailwindcss',
-    items: [
-      { title: 'Setup & Config', slug: 'tailwind-setup' },
-      { title: 'Layout System', slug: 'layout-system' },
-      { title: 'Responsiveness', slug: 'responsiveness' },
-      { title: 'Custom Classes', slug: 'custom-classes' },
-    ],
-  },
-  {
-    title: 'Productivity / Tools',
-    basePath: '/tools',
-    items: [
-      { title: 'VSCode Tips', slug: 'vscode-tips' },
-      { title: 'Git Workflow', slug: 'git-workflow' },
-      { title: 'Terminal Shortcuts', slug: 'terminal-shortcuts' },
-    ],
-  },
+{
+  title: 'Next.js',
+  basePath: '/nextjs',
+  items: [
+    { title: 'Setup & Installation', slug: 'nextjs-setup' },
+    { title: 'Struktur Folder', slug: 'folder-structure' },
+    { title: 'Pages & Routing', slug: 'pages-routing' },
+    { title: 'API Routes', slug: 'api-routes' },
+    { title: 'Deployment', slug: 'deployment' },
+  ],
+},
+
+{
+  title: "Shadcn UI",
+  basePath: "/shadcn",
+  items: [
+    { title: "Overview", slug: "index" },
+    { title: "Installation", slug: "install" },
+    { title: "Configuration", slug: "config" },
+    { title: "Usage", slug: "usage" },
+    { title: "Dialog", slug: "dialog" },
+    { title: "Button & Input", slug: "buttons-inputs" },
+    { title: "Navbar & Sidebar", slug: "navbar-sidebar" },
+  ],
+},
+
+{
+  title: 'Productivity / Tools',
+  basePath: '/tools',
+  items: [
+    { title: 'VSCode Tips', slug: 'vscode-tips' },
+    { title: 'Git Workflow', slug: 'git-workflow' },
+    { title: 'Terminal Shortcuts', slug: 'terminal-shortcuts' },
+  ],
+},
+
   {
     title: 'Projects',
     basePath: '/projects',
     items: [
-      { title: 'Contoh Project Next.js', slug: 'example-nextjs' },
-      { title: 'Project dengan TSX', slug: 'example-tsx' },
+      { title: 'Overview', slug: '' },
+      { title: 'Next.js + TypeScript', slug: 'nextjs-typescript' },
     ],
   },
-  {
-    title: 'Notes / Snippets',
-    basePath: '/notes',
-    items: [
-      { title: 'Code Snippets', slug: 'code-snippets' },
-      { title: 'Reusable Components', slug: 'reusable-components' },
-      { title: 'Commands & Scripts', slug: 'commands-scripts' },
-    ],
-  },
+{
+  title: 'Notes / Snippets',
+  basePath: '/notes',
+  items: [
+    { title: 'Code Snippets', slug: 'code-snippets' },
+    { title: 'Reusable Components', slug: 'reusable-components' },
+    { title: 'Commands & Scripts', slug: 'commands-scripts' },
+  ],
+},
 ];
 
 export default function Sidebar({ searchQuery, isOpen, onClose }: SidebarProps) {

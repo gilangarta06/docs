@@ -1,112 +1,128 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Copy } from "lucide-react";
 
 export default function ShadcnDocsPage() {
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+  };
+
+  const CodeBlock = ({ code }: { code: string }) => (
+    <div className="relative">
+      <pre className="bg-muted p-3 rounded-lg text-sm overflow-x-auto">
+        <code>{code}</code>
+      </pre>
+      <Button
+        size="icon"
+        variant="ghost"
+        className="absolute top-2 right-2"
+        onClick={() => copyToClipboard(code)}
+      >
+        <Copy className="h-4 w-4" />
+      </Button>
+    </div>
+  );
+
   return (
     <div className="space-y-10">
       {/* Header */}
       <section className="space-y-4">
         <h1 className="text-4xl font-bold tracking-tight">Shadcn / UI Components</h1>
         <p className="text-lg text-muted-foreground">
-          Panduan menggunakan Shadcn UI components untuk membangun antarmuka modern,
-          konsisten, dan mudah dikustomisasi.
+          Panduan instalasi dan penggunaan Shadcn UI Components — framework berbasis TailwindCSS yang fleksibel dan sepenuhnya dapat dikustomisasi.
         </p>
       </section>
 
       {/* Installation */}
-      <section id="shadcn-install" className="space-y-4">
+      <section id="install" className="space-y-4">
         <h2 className="text-2xl font-bold">Installation</h2>
         <p className="text-muted-foreground">
-          Untuk menginstal Shadcn, jalankan perintah berikut:
+          Untuk menginstal Shadcn versi terbaru (Oktober 2025), jalankan perintah berikut:
         </p>
         <Card>
           <CardHeader>
             <CardTitle>Perintah Instalasi</CardTitle>
           </CardHeader>
           <CardContent>
-            <pre className="bg-muted p-3 rounded-lg text-sm overflow-x-auto">
-              <code>{`npx shadcn-ui@latest init`}</code>
-            </pre>
+            <CodeBlock code={`npx shadcn@latest init`} />
             <p className="mt-2 text-sm text-muted-foreground">
-              Setelah instalasi, tambahkan komponen dengan:
+              Setelah inisialisasi, tambahkan komponen dengan perintah:
             </p>
-            <pre className="bg-muted p-3 rounded-lg text-sm overflow-x-auto mt-2">
-              <code>{`npx shadcn-ui@latest add button`}</code>
-            </pre>
+            <CodeBlock code={`npx shadcn@latest add button`} />
           </CardContent>
         </Card>
       </section>
 
-      {/* Navbar & Sidebar */}
-      <section id="navbar-sidebar" className="space-y-4">
-        <h2 className="text-2xl font-bold">Navbar & Sidebar</h2>
+      {/* Config */}
+      <section id="config" className="space-y-4">
+        <h2 className="text-2xl font-bold">Konfigurasi Tailwind</h2>
         <p className="text-muted-foreground">
-          Gunakan komponen Shadcn untuk membuat navigasi yang konsisten di seluruh aplikasi.
+          Pastikan konfigurasi <code>tailwind.config.js</code> sudah mencakup direktori app dan komponen Shadcn.
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Contoh Navbar</CardTitle>
+            <CardTitle>tailwind.config.js</CardTitle>
           </CardHeader>
           <CardContent>
-            <pre className="bg-muted p-3 rounded-lg text-sm overflow-x-auto">
-{`import { Button } from "@/components/ui/button";
+            <CodeBlock
+              code={`module.exports = {
+  darkMode: ["class"],
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./pages/**/*.{ts,tsx}",
+  ],
+  theme: { extend: {} },
+  plugins: [require("tailwindcss-animate")],
+};`}
+            />
+          </CardContent>
+        </Card>
+      </section>
 
-export function Navbar() {
+      {/* Usage */}
+      <section id="usage" className="space-y-4">
+        <h2 className="text-2xl font-bold">Penggunaan Komponen</h2>
+        <p className="text-muted-foreground">
+          Contoh penggunaan komponen <code>Button</code> yang telah diinstall dari Shadcn:
+        </p>
+        <Card>
+          <CardHeader>
+            <CardTitle>Contoh Button</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <CodeBlock
+              code={`import { Button } from "@/components/ui/button";
+
+export default function Example() {
   return (
-    <nav className="flex justify-between p-4 border-b">
-      <h1 className="font-bold">My App</h1>
-      <div className="space-x-2">
-        <Button variant="outline">Login</Button>
-        <Button>Register</Button>
-      </div>
-    </nav>
+    <div className="space-x-2">
+      <Button variant="default">Default</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="destructive">Destructive</Button>
+    </div>
   );
 }`}
-            </pre>
+            />
           </CardContent>
         </Card>
       </section>
 
-      {/* Buttons & Inputs */}
-      <section id="buttons-inputs" className="space-y-4">
-        <h2 className="text-2xl font-bold">Buttons & Inputs</h2>
+      {/* Dialog */}
+      <section id="dialog" className="space-y-4">
+        <h2 className="text-2xl font-bold">Contoh Dialog</h2>
         <p className="text-muted-foreground">
-          Shadcn menyediakan berbagai varian button dan input form yang siap pakai.
+          Gunakan dialog untuk menampilkan konfirmasi atau interaksi tambahan dengan pengguna.
         </p>
         <Card>
           <CardHeader>
-            <CardTitle>Contoh</CardTitle>
+            <CardTitle>Dialog Example</CardTitle>
           </CardHeader>
           <CardContent>
-            <pre className="bg-muted p-3 rounded-lg text-sm overflow-x-auto">
-{`import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-
-export function FormExample() {
-  return (
-    <form className="space-y-4">
-      <Input placeholder="Masukkan email" type="email" />
-      <Button type="submit">Submit</Button>
-    </form>
-  );
-}`}
-            </pre>
-          </CardContent>
-        </Card>
-      </section>
-
-      {/* Modals & Dialogs */}
-      <section id="modals" className="space-y-4">
-        <h2 className="text-2xl font-bold">Modals & Dialogs</h2>
-        <p className="text-muted-foreground">
-          Gunakan dialog untuk interaksi penting, seperti konfirmasi atau form tambahan.
-        </p>
-        <Card>
-          <CardHeader>
-            <CardTitle>Contoh Dialog</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <pre className="bg-muted p-3 rounded-lg text-sm overflow-x-auto">
-{`import { Button } from "@/components/ui/button";
+            <CodeBlock
+              code={`import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -130,7 +146,7 @@ export function DialogExample() {
     </Dialog>
   );
 }`}
-            </pre>
+            />
           </CardContent>
         </Card>
       </section>
